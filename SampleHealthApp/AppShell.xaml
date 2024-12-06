@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="SampleHealthApp.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:SampleHealthApp.Pages"
+    Title="SampleHealthApp">
+    
+    <FlyoutItem Title="User Account" Icon="dumbbell.png">
+        <ShellContent 
+            ContentTemplate="{DataTemplate local:AccountPage}"
+            Route="AccountPage"/>
+    </FlyoutItem>
+        <FlyoutItem Title="Forum" Icon="exercise.png">
+        <ShellContent 
+            ContentTemplate="{DataTemplate local:ForumPage}"
+            Route="ForumPage"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Settings" Icon="seting_icon.png">
+        <ShellContent 
+            ContentTemplate="{DataTemplate local:SettingsPage}"
+            Route="SettingsPage"/>
+    </FlyoutItem>
+
+    <FlyoutItem Title="Help / FAQ" Icon="help.png">
+        <ShellContent 
+            ContentTemplate="{DataTemplate local:HelpPage}"
+            Route="HelpPage"/>
+        
+    </FlyoutItem>
+  
+    
+</Shell>
+
+
+    
+        

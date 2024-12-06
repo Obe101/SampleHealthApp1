@@ -1,0 +1,86 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SampleHealthApp.Pages.AccountPage"
+             xmlns:viewmodel="clr-namespace:SampleHealthApp.ViewModels"
+             x:DataType="viewmodel:AccountViewModel"
+			 BackgroundColor="lightGreen"
+			 Title="User Account Info">
+
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Color x:Key="textColor">White</Color>
+			<Color x:Key="boxColor">#44FFFFFF</Color>
+			<Style TargetType="Label">
+				<Setter Property="TextColor" Value="{StaticResource textColor}" />
+				<Setter Property="HorizontalOptions" Value="Center" />
+			</Style>
+		</ResourceDictionary>
+	</ContentPage.Resources>
+
+    <Grid RowDefinitions="100, Auto, *" 
+          ColumnDefinitions=".75*, .25*"
+          Padding="10"
+          RowSpacing="5"
+          ColumnSpacing="3">
+                
+        
+        <Image Source="dumbbell.png" 
+               Grid.ColumnSpan="2" 
+               BackgroundColor="Black"/>
+
+        <Frame Grid.Row="1"
+               BackgroundColor="DarkGray">
+            <Entry Placeholder="Enter Workout Name"
+                   PlaceholderColor="Black"
+                   Text="{Binding Text}"
+                   TextColor="Black"
+                   Grid.Row="1"/>
+        </Frame>
+
+
+
+
+
+            <Button Text="Add"
+                TextColor="White"
+                FontAttributes="Bold"
+                BackgroundColor="DarkCyan"
+                Command="{Binding AddCommand}"
+                Grid.Row="1"
+                Grid.Column="1"
+                Padding="10"/>
+
+
+        <CollectionView Grid.Row="2" Grid.ColumnSpan="2"
+                        ItemsSource="{Binding WorkoutName}"
+                       SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="{x:Type x:String}">
+                    <SwipeView>
+                        <SwipeView.RightItems>
+                            <SwipeItems>
+                                <SwipeItem Text="Delete"
+                                           BackgroundColor="Red"
+                                           Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:AccountViewModel}}, Path=RemoveCommand}"
+                                           CommandParameter="{Binding .}"/>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+                        <Grid Padding="0,5">
+                            <Frame>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer 
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:AccountViewModel}}, Path=TapCommand}"
+                                        CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+                                <Label Text="{Binding .}"
+                                       FontSize="24"
+                                       TextColor="Black"/>
+                            </Frame>
+                        </Grid>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        
+    </Grid>
+</ContentPage>

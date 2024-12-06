@@ -1,0 +1,50 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SampleHealthApp.Pages.HelpPage"
+             BackgroundColor="LightGreen"
+             Title="Help / FAQ">
+    <Grid RowDefinitions="100, Auto, *" 
+          ColumnDefinitions=".75*, .25*"
+          RowSpacing="20"
+          Padding="5">
+        
+            <Border Stroke="#C49B33"
+                    StrokeThickness="4"
+                    Background="LightGray"
+                    Padding="100"
+                    Grid.RowSpan="2"
+                    Grid.ColumnSpan="4"
+                    HorizontalOptions="Center">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="100,0,0,100" />
+                </Border.StrokeShape>
+
+                <Entry x:Name="editor"
+                       Placeholder="Ask your question"
+                       Grid.Row="1"
+                       Grid.Column="3"
+                       PlaceholderColor="Black"
+                       HeightRequest="250"
+                       TextChanged="OnEditorTextChanged"
+                       Completed="OnEditorCompleted"
+                       CharacterSpacing="0"
+                       MaxLength="250"
+	                   ClearButtonVisibility="WhileEditing"
+                       ReturnType ="Send"
+                       />
+
+            
+            </Border>
+        <Button Text="ASK"
+                BackgroundColor="DarkCyan"
+                HorizontalOptions="Center"
+                HeightRequest="75"
+                WidthRequest="250"
+                Padding="10"
+                Command="{Binding AddCommand}"
+                Grid.Row="3"
+                Grid.ColumnSpan="3"/>
+
+    </Grid>
+    
+</ContentPage>
